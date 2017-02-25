@@ -1,0 +1,44 @@
+
+8squid:S1148"#Use a logger to log this exception.(Ç’Çê
+:squid:S1166"%Either log or rethrow this exception.(”ı¾
+:squid:S1166"%Either log or rethrow this exception.(µää«
+@squid:S1168"+Return an empty collection instead of null.(É¤ç·
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼‡ÿÚ
+:squid:S1166"%Either log or rethrow this exception.(–ãÉ˜
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(É¤ç·
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éû½€
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÖÉê
+:squid:S1166"%Either log or rethrow this exception.(”ı¾
+›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÄÜ»ûÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+8squid:S2095"Close this "FileOutputStream".(•è–«ùÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(É¤ç·
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ù«’ıÿÿÿÿ
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éû½€
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ù«’ıÿÿÿÿ
+@squid:S1168"+Return an empty collection instead of null.(É¤ç·
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(ï­£Ä
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S00108")Either remove or fill this block of code.(ÅÔĞÁ
+jsquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(É¤ç·
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àæÚøøÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(”ı¾
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜Ù«’ıÿÿÿÿ
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼‡ÿÚ
+lsquid:S3008"RRename this field "DB_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â›çúÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(”ı¾
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÅÃ¶
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÖÉê
+isquid:S00122"TAt most one statement is allowed per line, but 2 statements were found on this line.(„¹ÑQ
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿œÚîøÿÿÿÿ
+gsquid:S3008"RRename this field "DB_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯‹å
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àæÚøøÿÿÿÿ
+lsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÅÃ¶
+@squid:S1168"+Return an empty collection instead of null.(É¤ç·
+•squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ã€¡u
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ·æ»ùÿÿÿÿ
+qsquid:S00117"VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ·æ»ùÿÿÿÿ
