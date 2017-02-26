@@ -3,6 +3,7 @@ package jogobotanica.com.br.quizbotan.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.List;
@@ -13,27 +14,31 @@ import jogobotanica.com.br.quizbotan.infra.CustomImagemAdapter;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 
-public class Score extends AppCompatActivity {
-    ListView lstView;
+public class Pontos extends AppCompatActivity {
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score);
+        setContentView(R.layout.activity_pontos);
 
-        lstView = (ListView)findViewById(R.id.lstRanking);
+        listView = (ListView)findViewById(R.id.listaRanking);
         DbHelper db = new DbHelper(this);
-        List<Ranking> lstRanking = db.getRanking();
-        if(lstRanking.size() > 0)
+        List<Ranking> listRanking = db.getRanking();
+        if(listRanking.size() > 0)
         {
-            CustomImagemAdapter adapter = new CustomImagemAdapter(this,lstRanking);
-            lstView.setAdapter(adapter);
+            CustomImagemAdapter adapter = new CustomImagemAdapter(this,listRanking);
+            listView.setAdapter(adapter);
         }
+    }
+
+    public void voltar(View view){
+        this.onBackPressed();
     }
 
     @Override
     public void onBackPressed() {
-        Intent irTelaIncial = new Intent( this, MainActivity.class);
+        Intent irTelaIncial = new Intent( this, PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();
 

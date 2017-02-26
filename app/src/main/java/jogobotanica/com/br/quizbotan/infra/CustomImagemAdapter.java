@@ -7,35 +7,28 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.List;
-
 import jogobotanica.com.br.quizbotan.R;
 import jogobotanica.com.br.quizbotan.dominio.Ranking;
-
-
-/**
- * Created by reale on 30/09/2016.
- */
 
 public class CustomImagemAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Ranking> lstRanking;
+    private List<Ranking> listaRanking;
 
-    public CustomImagemAdapter(Context context, List<Ranking> lstRanking) {
+    public CustomImagemAdapter(Context context, List<Ranking> listaRanking) {
         this.context = context;
-        this.lstRanking = lstRanking;
+        this.listaRanking = listaRanking;
     }
 
     @Override
     public int getCount() {
-        return lstRanking.size();
+        return listaRanking.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return lstRanking.get(position);
+        return listaRanking.get(position);
     }
 
     @Override
@@ -47,20 +40,19 @@ public class CustomImagemAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.row,null);
+        View view = inflater.inflate(R.layout.linhaspontos,null);
 
-        ImageView imgTop = (ImageView)view.findViewById(R.id.imgTop);
-        TextView txtTop = (TextView)view.findViewById(R.id.txtTop);
+        ImageView imagemTopo = (ImageView)view.findViewById(R.id.imagemTopo);
+        TextView textViewTopo = (TextView)view.findViewById(R.id.textViewTopo);
 
-        if(position == 0 ) {// top1
-            imgTop.setImageResource(R.drawable.top1);
-        }else if(position == 1) { // top 2
-            imgTop.setImageResource(R.drawable.top2);
+        if(position == 0 ) {
+            imagemTopo.setImageResource(R.drawable.imagem_top1);
+        }else if(position == 1) {
+            imagemTopo.setImageResource(R.drawable.imagem_top2);
         }else {
-            imgTop.setImageResource(R.drawable.top3);
+            imagemTopo.setImageResource(R.drawable.imagem_top3);
         }
-        txtTop.setText(String.format("%.1f",lstRanking.get(position).getScore()));
+        textViewTopo.setText(String.format("%.1f", listaRanking.get(position).getScore()));
         return view;
-
     }
 }

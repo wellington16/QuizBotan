@@ -4,7 +4,7 @@ package jogobotanica.com.br.quizbotan.dominio;
  * Created by reale on 30/09/2016.
  */
 
-public class Question {
+public class Questoes {
     private int ID;
     private String Image;
     private String AnswerA;
@@ -13,7 +13,7 @@ public class Question {
     private String AnswerD;
     private String CorrectAnswer;
 
-    public Question(int ID, String image, String answerA, String answerB, String answerC, String answerD, String correctAnswer) {
+    public Questoes(int ID, String image, String answerA, String answerB, String answerC, String answerD, String correctAnswer) {
         this.ID = ID;
         Image = image;
         AnswerA = answerA;

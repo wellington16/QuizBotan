@@ -2,6 +2,7 @@ package jogobotanica.com.br.quizbotan.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ import jogobotanica.com.br.quizbotan.infra.Enum;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 
-public class MainActivity extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity {
 
     SeekBar seekBar;
     TextView txtMode;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_principal);
 
         seekBar = (SeekBar)findViewById(R.id.seekBar);
         txtMode = (TextView)findViewById(R.id.txtMode);
@@ -34,10 +35,18 @@ public class MainActivity extends AppCompatActivity {
         btnSair = (Button) findViewById(R.id.btnSair);
 
 
+        FloatingActionButton fabSobre = (FloatingActionButton) findViewById(R.id.fabSobre);
+        fabSobre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(getApplicationContext(),AjudaActivity.class));
+                finish();
+            }
+        });
 
         db = new DbHelper(this);
         try{
-            db.createDataBase();
+            db.criarBanco();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -51,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(progress == 0)
-                    txtMode.setText(Enum.MODE.EASY.toString());
+                    txtMode.setText(Enum.MODE.FÁCIL.toString());
                 else if(progress == 1)
-                    txtMode.setText(Enum.MODE.MEDIUM.toString());
+                    txtMode.setText(Enum.MODE.MÉDIO.toString());
                 else if(progress == 2)
-                    txtMode.setText(Enum.MODE.HARD.toString());
+                    txtMode.setText(Enum.MODE.AVANÇADO.toString());
                 else if(progress == 3)
-                    txtMode.setText(Enum.MODE.HARDEST.toString());
+                    txtMode.setText(Enum.MODE.MUITO_AVANÇADO.toString());
             }
 
             @Override
@@ -73,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Playing.class);
-                intent.putExtra("MODE",getPlayMode()); // Send Mode to Playing page
+                Intent intent = new Intent(getApplicationContext(),Jogadas.class);
+                intent.putExtra("MODE",getPlayMode()); // Send Mode to Jogadas page
                 startActivity(intent);
                 finish();
             }
@@ -83,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         btnScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Score.class);
+                Intent intent = new Intent(getApplicationContext(),Pontos.class);
                 startActivity(intent);
                 finish();
             }
@@ -92,14 +101,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getPlayMode() {
-        if(seekBar.getProgress()==0)
-            return Enum.MODE.EASY.toString();
-        else if(seekBar.getProgress()==1)
-            return Enum.MODE.MEDIUM.toString();
-        else if(seekBar.getProgress()==2)
-            return Enum.MODE.HARD.toString();
-        else
-            return Enum.MODE.HARDEST.toString();
+        if (seekBar.getProgress() == 0){
+            return Enum.MODE.FÁCIL.toString();
+        }else if(seekBar.getProgress()==1) {
+            return Enum.MODE.MÉDIO.toString();
+        }else if(seekBar.getProgress()==2) {
+            return Enum.MODE.AVANÇADO.toString();
+        }else {
+            return Enum.MODE.MUITO_AVANÇADO.toString();
+        }
     }
 
     public final void finalizar(View v){

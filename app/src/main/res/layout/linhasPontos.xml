@@ -10,12 +10,12 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgTop"
-            android:background="@drawable/top1"
+            android:id="@+id/imagemTopo"
+            android:background="@drawable/imagem_top1"
             android:layout_width="50dp"
             android:layout_height="50dp" />
         <TextView
-            android:id="@+id/txtTop"
+            android:id="@+id/textViewTopo"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginLeft="10dp"

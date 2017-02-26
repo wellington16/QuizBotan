@@ -13,7 +13,7 @@ import jogobotanica.com.br.quizbotan.R;
 import jogobotanica.com.br.quizbotan.infra.Enum;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
-public class Done extends AppCompatActivity {
+public class FimJogo extends AppCompatActivity {
 
     Button btnTryAgain;
     TextView txtResultScore, txtResultQuestion;
@@ -24,7 +24,7 @@ public class Done extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_done);
+        setContentView(R.layout.activity_fimjogo);
 
         DbHelper db = new DbHelper(this);
 
@@ -36,7 +36,7 @@ public class Done extends AppCompatActivity {
         btnTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -86,13 +86,13 @@ public class Done extends AppCompatActivity {
             progressBarResult.setProgress(correctAnswer);
 
             //save score
-            db.insertScore(finalScore);
+            db.inserirPontos(finalScore);
         }
     }
 
     @Override
     public void onBackPressed() {
-        Intent irTelaIncial = new Intent( this, MainActivity.class);
+        Intent irTelaIncial = new Intent( this, PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();
 

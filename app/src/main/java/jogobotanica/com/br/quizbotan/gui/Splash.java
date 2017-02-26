@@ -8,7 +8,7 @@ import jogobotanica.com.br.quizbotan.R;
 
 
 public class Splash extends AppCompatActivity {
-    private static final int TEMPO_SPLASH = 1000;
+    private static final int TEMPO_SPLASH = 3000;
     private final int[] tempPassado = {0};
     private boolean mbActive;
     private ProgressBar progressBar;
@@ -62,7 +62,7 @@ public class Splash extends AppCompatActivity {
     }
 
     private void chamarLogin() {
-        Intent intent = new Intent(Splash.this, MainActivity.class);
+        Intent intent = new Intent(Splash.this, PrincipalActivity.class);
         startActivity(intent);
         finish();
     }
@@ -81,6 +81,11 @@ public class Splash extends AppCompatActivity {
             final int progress = getProgressBar().getMax() * tempPassados / TEMPO_SPLASH;
             getProgressBar().setProgress(progress);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 }

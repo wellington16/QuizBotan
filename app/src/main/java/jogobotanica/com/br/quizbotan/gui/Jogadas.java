@@ -14,18 +14,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jogobotanica.com.br.quizbotan.R;
-import jogobotanica.com.br.quizbotan.dominio.Question;
+import jogobotanica.com.br.quizbotan.dominio.Questoes;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 
-public class Playing extends AppCompatActivity implements View.OnClickListener {
+public class Jogadas extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000; // 1 second
     final static long TIMEOUT = 10000; // 10 sconds
     int progressValue = 0;
 
     CountDownTimer mCountDown; // for progressbar
-    List<Question> questionPlay = new ArrayList<>(); //total Question
+    List<Questoes> questoesPlay = new ArrayList<>(); //total Questoes
     DbHelper db;
     int index=0,score=0,thisQuestion=0,totalQuestion = 0,correctAnswer = 0;
     String mode="";
@@ -41,7 +41,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playing);
 
-        //Get Data from MainActivity
+        //Get Data from PrincipalActivity
         Bundle extra = getIntent().getExtras();
         if(extra != null)
             mode=extra.getString("MODE");
@@ -68,8 +68,8 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
 
-        questionPlay = db.getQuestionMode(mode);
-        totalQuestion = questionPlay.size();
+        questoesPlay = db.getQuestionMode(mode);
+        totalQuestion = questoesPlay.size();
 
         mCountDown = new CountDownTimer(TIMEOUT,INTERVAL) {
             @Override
@@ -94,17 +94,17 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
             progressBar.setProgress(0);
             progressValue = 0;
 
-            int ImageId=this.getResources().getIdentifier(questionPlay.get(index).getImage().toLowerCase(),"drawable",getPackageName());
+            int ImageId=this.getResources().getIdentifier(questoesPlay.get(index).getImage().toLowerCase(),"drawable",getPackageName());
             imageView.setBackgroundResource(ImageId);
-            btnA.setText(questionPlay.get(index).getAnswerA());
-            btnB.setText(questionPlay.get(index).getAnswerB());
-            btnC.setText(questionPlay.get(index).getAnswerC());
-            btnD.setText(questionPlay.get(index).getAnswerD());
+            btnA.setText(questoesPlay.get(index).getAnswerA());
+            btnB.setText(questoesPlay.get(index).getAnswerB());
+            btnC.setText(questoesPlay.get(index).getAnswerC());
+            btnD.setText(questoesPlay.get(index).getAnswerD());
 
             mCountDown.start();
         }
         else{
-            Intent intent = new Intent(this,Done.class);
+            Intent intent = new Intent(this,FimJogo.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("SCORE",score);
             dataSend.putInt("TOTAL",totalQuestion);
@@ -121,7 +121,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
         mCountDown.cancel();
         if(index < totalQuestion){
             Button clickedButton = (Button)v;
-            if(clickedButton.getText().equals(questionPlay.get(index).getCorrectAnswer()))
+            if(clickedButton.getText().equals(questoesPlay.get(index).getCorrectAnswer()))
             {
                 score+=10; // increase score
                 correctAnswer++ ; //increase correct answer
@@ -136,7 +136,7 @@ public class Playing extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        Intent irTelaIncial = new Intent( this, MainActivity.class);
+        Intent irTelaIncial = new Intent( this, PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();
 
