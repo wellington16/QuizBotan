@@ -16,28 +16,28 @@ public class CustomImagemAdapter extends BaseAdapter {
     private Context context;
     private List<Ranking> listaRanking;
 
-    public CustomImagemAdapter(Context context, List<Ranking> listaRanking) {
-        this.context = context;
-        this.listaRanking = listaRanking;
+    public CustomImagemAdapter(Context contexto, List<Ranking> listaRanking1) {
+        this.context = contexto;
+        this.listaRanking = listaRanking1;
     }
 
     @Override
-    public int getCount() {
+    public final int getCount() {
         return listaRanking.size();
     }
 
     @Override
-    public Object getItem(int position) {
+    public final Object getItem(int position) {
         return listaRanking.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public final long getItemId(int position) {
         return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public final View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.linhaspontos,null);

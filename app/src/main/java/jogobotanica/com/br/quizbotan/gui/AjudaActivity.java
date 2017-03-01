@@ -10,18 +10,18 @@ import jogobotanica.com.br.quizbotan.R;
 public class AjudaActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajuda);
     }
 
 
-    public void voltar(View view){
+    public final void voltar(View view){
         this.onBackPressed();
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent irTelaIncial = new Intent(getApplicationContext(), PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();

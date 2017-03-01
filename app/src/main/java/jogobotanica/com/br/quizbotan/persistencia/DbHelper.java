@@ -31,7 +31,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String WHERE = " WHERE ";
     private static final String LIKE = " LIKE ? ";
 
-    public DbHelper(Context context) {
+    public   DbHelper(Context context) {
         super(context, DB_NAME, null, 1);
 
         DB_PATH = context.getApplicationInfo().dataDir + "/databases/";

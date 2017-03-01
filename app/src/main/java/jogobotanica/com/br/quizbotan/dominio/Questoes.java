@@ -5,77 +5,77 @@ package jogobotanica.com.br.quizbotan.dominio;
  */
 
 public class Questoes {
-    private int ID;
-    private String Image;
-    private String AnswerA;
-    private String AnswerB;
-    private String AnswerC;
-    private String AnswerD;
-    private String CorrectAnswer;
+    private int iD;
+    private String imagem;
+    private String respostaA;
+    private String respostaB;
+    private String respostaC;
+    private String respostaD;
+    private String respostaCorreta;
 
-    public Questoes(int ID, String image, String answerA, String answerB, String answerC, String answerD, String correctAnswer) {
-        this.ID = ID;
-        Image = image;
-        AnswerA = answerA;
-        AnswerB = answerB;
-        AnswerC = answerC;
-        AnswerD = answerD;
-        CorrectAnswer = correctAnswer;
+    public Questoes(int id, String image, String answerA, String answerB, String answerC, String answerD, String correctAnswer) {
+        this.iD = id;
+        imagem = image;
+        respostaA = answerA;
+        respostaB = answerB;
+        respostaC = answerC;
+        respostaD = answerD;
+        respostaCorreta = correctAnswer;
     }
 
-    public int getID() {
-        return ID;
+    public final int getiD() {
+        return iD;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public final void setiD(int id) {
+        this.iD = id;
     }
 
-    public String getImage() {
-        return Image;
+    public final String getImage() {
+        return imagem;
     }
 
-    public void setImage(String image) {
-        Image = image;
+    public final void setImage(String image) {
+        imagem = image;
     }
 
-    public String getAnswerA() {
-        return AnswerA;
+    public final String getRespostaA() {
+        return respostaA;
     }
 
-    public void setAnswerA(String answerA) {
-        AnswerA = answerA;
+    public final void setRespostaA(String respostaA) {
+        this.respostaA = respostaA;
     }
 
-    public String getAnswerB() {
-        return AnswerB;
+    public final String getRespostaB() {
+        return respostaB;
     }
 
-    public void setAnswerB(String answerB) {
-        AnswerB = answerB;
+    public final void setRespostaB(String respostaB) {
+        this.respostaB = respostaB;
     }
 
-    public String getAnswerC() {
-        return AnswerC;
+    public final String getRespostaC() {
+        return respostaC;
     }
 
-    public void setAnswerC(String answerC) {
-        AnswerC = answerC;
+    public final void setRespostaC(String respostaC) {
+        this.respostaC = respostaC;
     }
 
-    public String getAnswerD() {
-        return AnswerD;
+    public final String getRespostaD() {
+        return respostaD;
     }
 
-    public void setAnswerD(String answerD) {
-        AnswerD = answerD;
+    public final void setRespostaD(String respostaD) {
+        this.respostaD = respostaD;
     }
 
-    public String getCorrectAnswer() {
-        return CorrectAnswer;
+    public final String getRespostaCorreta() {
+        return respostaCorreta;
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
-        CorrectAnswer = correctAnswer;
+    public final void setRespostaCorreta(String respostaCorreta) {
+        this.respostaCorreta = respostaCorreta;
     }
 }

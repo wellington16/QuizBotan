@@ -15,14 +15,12 @@ import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 public class FimJogoActivity extends AppCompatActivity {
 
-    Button btnTryAgain;
-    TextView txtResultScore, txtResultQuestion;
-    ProgressBar progressBarResult;
-    double subtract = 0.0;
-
+    private Button btnTryAgain;
+    private TextView txtResultScore, txtResultQuestion;
+    private ProgressBar progressBarResult;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fimjogo);
 
@@ -59,24 +57,28 @@ public class FimJogoActivity extends AppCompatActivity {
             }
             else if(totalQuestion == Enum.MEDIUM_MODE_NUM) // MEDIUM MODE
             {
-                playCount = db.getPlayCount(1);
+                final int level = 1;
+                playCount = db.getPlayCount(level);
                 playCount++;
-                db.updatePlayCount(1,playCount); // Set PlayCount ++
+                db.updatePlayCount(level,playCount); // Set PlayCount ++
             }
             else if(totalQuestion == Enum.HARD_MODE_NUM) // HARD MODE
             {
-                playCount = db.getPlayCount(2);
+                final int level = 2;
+                playCount = db.getPlayCount(level);
                 playCount++;
-                db.updatePlayCount(2,playCount); // Set PlayCount ++
+                db.updatePlayCount(level,playCount); // Set PlayCount ++
             }
             else if(totalQuestion == Enum.HARDEST_MODE_NUM) // HARDEST MODE
             {
-                playCount = db.getPlayCount(3);
+                final int level = 3;
+                playCount = db.getPlayCount(level);
                 playCount++;
-                db.updatePlayCount(3,playCount); // Set PlayCount ++
+                db.updatePlayCount(level,playCount); // Set PlayCount ++
             }
 
-            double porcentagem = ((score/totalQuestion)*10)  ;
+            final int porcento = 10;
+            double porcentagem = ((score/totalQuestion)* porcento)  ;
 
             txtResultScore.setText(String.format("Pontos : %d(%.1f)%%", score, porcentagem));
             txtResultQuestion.setText(String.format("Acertos : %d/%d", correctAnswer, totalQuestion));
@@ -90,7 +92,7 @@ public class FimJogoActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent irTelaIncial = new Intent( this, PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();

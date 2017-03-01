@@ -15,10 +15,11 @@ import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 
 public class PontosActivity extends AppCompatActivity {
-    ListView listView;
+
+    private ListView listView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pontos);
 
@@ -32,12 +33,12 @@ public class PontosActivity extends AppCompatActivity {
         }
     }
 
-    public void voltar(View view){
+    public final void voltar(View view){
         this.onBackPressed();
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent irTelaIncial = new Intent( getApplicationContext(), PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();

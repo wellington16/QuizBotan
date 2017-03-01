@@ -20,40 +20,37 @@ import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 public class JogadasActivity extends AppCompatActivity implements View.OnClickListener {
 
-    final static long INTERVAL = 1000; // 1 second
-    final static long TIMEOUT = 5000; // 10 sconds
-    int progressValue = 0;
+    private static final  long INTERVAL = 1000; // 1 second
+    private static final  long TIMEOUT = 5000; // 10 sconds
+    private int progressValue = 0;
 
-    CountDownTimer mCountDown; // for progressbar
-    List<Questoes> questoesPlay = new ArrayList<>(); //total Questoes
-    DbHelper db;
-    int index=0,thisQuestion=0,totalQuestion = 0,correctAnswer = 0;
-    String mode="";
-    int score;
+    private CountDownTimer mCountDown; // for progressbar
+    private List<Questoes> questoesPlay = new ArrayList<>(); //total Questoes
+    private DbHelper db;
+    private int index=0,thisQuestion=0,totalQuestion = 0,correctAnswer = 0;
+    private String mode="";
+    private int score;
 
     //Control
-    ProgressBar progressBar;
-    ImageView imageView;
-    Button btnA,btnB,btnC,btnD;
-    TextView txtScore,txtQuestion;
+    private ProgressBar progressBar;
+    private ImageView imageView;
+    private Button btnA,btnB,btnC,btnD;
+    private TextView txtScore,txtQuestion;
 
-    public int getScore() {
+    public final int getScore() {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score += score;
-    }
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogadas);
 
         //Get Data from PrincipalActivity
         Bundle extra = getIntent().getExtras();
-        if(extra != null)
-            mode=extra.getString("MODE");
+        if(extra != null) {
+            mode = extra.getString("MODE");
+        }
 
         db = new DbHelper(this);
 
@@ -74,7 +71,7 @@ public class JogadasActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    protected void onResume() {
+    protected final void onResume() {
         super.onResume();
 
         questoesPlay = db.getQuestionMode(mode);
@@ -96,19 +93,19 @@ public class JogadasActivity extends AppCompatActivity implements View.OnClickLi
         showQuestion(index);
     }
 
-    private void showQuestion(int index) {
+    private final void showQuestion(int index) {
         if(index < totalQuestion){
             thisQuestion++;
             txtQuestion.setText(String.format("%d/%d",thisQuestion,totalQuestion));
             progressBar.setProgress(0);
             progressValue = 0;
 
-            int ImageId=this.getResources().getIdentifier(questoesPlay.get(index).getImage().toLowerCase(),"drawable",getPackageName());
-            imageView.setBackgroundResource(ImageId);
-            btnA.setText(questoesPlay.get(index).getAnswerA());
-            btnB.setText(questoesPlay.get(index).getAnswerB());
-            btnC.setText(questoesPlay.get(index).getAnswerC());
-            btnD.setText(questoesPlay.get(index).getAnswerD());
+            int imageId=this.getResources().getIdentifier(questoesPlay.get(index).getImage().toLowerCase(),"drawable",getPackageName());
+            imageView.setBackgroundResource(imageId);
+            btnA.setText(questoesPlay.get(index).getRespostaA());
+            btnB.setText(questoesPlay.get(index).getRespostaB());
+            btnC.setText(questoesPlay.get(index).getRespostaC());
+            btnD.setText(questoesPlay.get(index).getRespostaD());
 
             mCountDown.start();
         }
@@ -125,26 +122,28 @@ public class JogadasActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onClick(View v) {
+    public final void onClick(View v) {
 
         mCountDown.cancel();
         if(index < totalQuestion){
             Button clickedButton = (Button)v;
-            if(clickedButton.getText().equals(questoesPlay.get(index).getCorrectAnswer()))
+            if(clickedButton.getText().equals(questoesPlay.get(index).getRespostaCorreta()))
             {
-                 score += 10; // increase score
+                final int pontos = 10;
+                score += pontos; // increase score
                 correctAnswer++ ; //increase correct answer
                 showQuestion(++index);
             }
-            else
+            else {
                 showQuestion(++index); // If choose right , just go to next question
-            txtScore.setText(String.format("%d",getScore()));
+                txtScore.setText(String.format("%d", getScore()));
+            }
         }
 
     }
 
     @Override
-    public void onBackPressed() {
+    public final void onBackPressed() {
         Intent irTelaIncial = new Intent( this, PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();

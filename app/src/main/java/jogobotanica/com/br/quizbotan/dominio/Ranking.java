@@ -16,19 +16,19 @@ public class Ranking {
     }
 
 
-    public int getId() {
+    public final int getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public final void setId(int id) {
         Id = id;
     }
 
-    public double getScore() {
+    public final double getScore() {
         return Score;
     }
 
-    public void setScore(double score) {
+    public final void setScore(double score) {
         Score = score;
     }
 }
