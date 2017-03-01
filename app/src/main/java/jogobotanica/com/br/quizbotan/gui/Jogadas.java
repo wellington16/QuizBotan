@@ -21,20 +21,29 @@ import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 public class Jogadas extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000; // 1 second
-    final static long TIMEOUT = 10000; // 10 sconds
+    final static long TIMEOUT = 5000; // 10 sconds
     int progressValue = 0;
 
     CountDownTimer mCountDown; // for progressbar
     List<Questoes> questoesPlay = new ArrayList<>(); //total Questoes
     DbHelper db;
-    int index=0,score=0,thisQuestion=0,totalQuestion = 0,correctAnswer = 0;
+    int index=0,thisQuestion=0,totalQuestion = 0,correctAnswer = 0;
     String mode="";
+    int score;
 
     //Control
     ProgressBar progressBar;
     ImageView imageView;
     Button btnA,btnB,btnC,btnD;
     TextView txtScore,txtQuestion;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score += score;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,13 +132,13 @@ public class Jogadas extends AppCompatActivity implements View.OnClickListener {
             Button clickedButton = (Button)v;
             if(clickedButton.getText().equals(questoesPlay.get(index).getCorrectAnswer()))
             {
-                score+=10; // increase score
+                 score += 10; // increase score
                 correctAnswer++ ; //increase correct answer
                 showQuestion(++index);
             }
             else
                 showQuestion(++index); // If choose right , just go to next question
-            txtScore.setText(String.format("%d",score));
+            txtScore.setText(String.format("%d",getScore()));
         }
 
     }

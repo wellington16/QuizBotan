@@ -13,7 +13,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/app/Instrumentation.class">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/content/Context.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/os/BaseBundle.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/os/Looper.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/java/lang/Object.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../Projetos/Projetos Android/FlagsQuizApp-master/app/src/main/java/dev/edmt/flagsquizapp/Done.java">
           <value>
             <set />
           </value>
@@ -29,6 +54,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/FimJogo.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/Jogadas.java">
           <value>
             <set />
           </value>

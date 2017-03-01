@@ -76,17 +76,16 @@ public class FimJogo extends AppCompatActivity {
                 db.updatePlayCount(3,playCount); // Set PlayCount ++
             }
 
-            subtract = score != 0 ? ((5.0/(float)score)*100)*(playCount-1): 0; //-1 because we playCount++ before we calculate result
-            double finalScore = score - subtract;
+            double porcentagem = ((score/totalQuestion)*10)  ;
 
-            txtResultScore.setText(String.format("SCORE : %.1f (-%d)%%", finalScore,5*(playCount-1)));
-            txtResultQuestion.setText(String.format("PASSED : %d/%d", correctAnswer, totalQuestion));
+            txtResultScore.setText(String.format("Pontos : %d(%.1f)%%", score, porcentagem));
+            txtResultQuestion.setText(String.format("Acertos : %d/%d", correctAnswer, totalQuestion));
 
             progressBarResult.setMax(totalQuestion);
             progressBarResult.setProgress(correctAnswer);
 
             //save score
-            db.inserirPontos(finalScore);
+            db.inserirPontos(score);
         }
     }
 

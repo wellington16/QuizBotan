@@ -1,8 +1,10 @@
 package jogobotanica.com.br.quizbotan.gui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -113,11 +115,29 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public final void finalizar(View v){
-        this.onBackPressed();
+
+        confirmarSaida();
     }
 
     @Override
     public void onBackPressed() {
-        this.finish();
+
+        confirmarSaida();
+    }
+
+
+    private void confirmarSaida(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sair");
+        builder.setMessage("Deseja Realmente Sair?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton("Não", null);
+        AlertDialog alerta = builder.create();
+        alerta.show();
     }
 }
