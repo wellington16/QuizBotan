@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import jogobotanica.com.br.quizbotan.R;
 
 
-public class Splash extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
     private static final int TEMPO_SPLASH = 3000;
     private final int[] tempPassado = {0};
     private boolean mbActive;
@@ -62,7 +62,7 @@ public class Splash extends AppCompatActivity {
     }
 
     private void chamarLogin() {
-        Intent intent = new Intent(Splash.this, PrincipalActivity.class);
+        Intent intent = new Intent(SplashActivity.this, PrincipalActivity.class);
         startActivity(intent);
         finish();
     }

@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -23,7 +24,9 @@ public class PrincipalActivity extends AppCompatActivity {
     SeekBar seekBar;
     TextView txtMode;
     Button btnPlay,btnScore,btnSair;
+    ImageView flags;
     DbHelper db;
+    FloatingActionButton fabSobre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +38,9 @@ public class PrincipalActivity extends AppCompatActivity {
         btnPlay = (Button)findViewById(R.id.btnPlay);
         btnScore = (Button)findViewById(R.id.btnScore);
         btnSair = (Button) findViewById(R.id.btnSair);
+        fabSobre = (FloatingActionButton) findViewById(R.id.fabSobre);
 
-
-        FloatingActionButton fabSobre = (FloatingActionButton) findViewById(R.id.fabSobre);
-        fabSobre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity( new Intent(getApplicationContext(),AjudaActivity.class));
-                finish();
-            }
-        });
+        flags = (ImageView) findViewById(R.id.flags);
 
         db = new DbHelper(this);
         try{
@@ -53,9 +49,6 @@ public class PrincipalActivity extends AppCompatActivity {
         catch (IOException e){
             e.printStackTrace();
         }
-
-
-
 
         //Event
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -84,8 +77,8 @@ public class PrincipalActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Jogadas.class);
-                intent.putExtra("MODE",getPlayMode()); // Send Mode to Jogadas page
+                Intent intent = new Intent(getApplicationContext(),JogadasActivity.class);
+                intent.putExtra("MODE",getPlayMode()); // Send Mode to JogadasActivity page
                 startActivity(intent);
                 finish();
             }
@@ -94,8 +87,24 @@ public class PrincipalActivity extends AppCompatActivity {
         btnScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Pontos.class);
+                Intent intent = new Intent(getApplicationContext(),PontosActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        fabSobre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(getApplicationContext(),AjudaActivity.class));
+                finish();
+            }
+        });
+
+        flags.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(getApplicationContext(),AjudaActivity.class));
                 finish();
             }
         });
@@ -115,13 +124,11 @@ public class PrincipalActivity extends AppCompatActivity {
     }
 
     public final void finalizar(View v){
-
         confirmarSaida();
     }
 
     @Override
     public void onBackPressed() {
-
         confirmarSaida();
     }
 
@@ -133,6 +140,8 @@ public class PrincipalActivity extends AppCompatActivity {
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+//                DbHelper dbHelper = new DbHelper(getApplicationContext());
+//                dbHelper.deletar();
                 finish();
             }
         });

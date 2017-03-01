@@ -14,7 +14,7 @@ import jogobotanica.com.br.quizbotan.infra.CustomImagemAdapter;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 
-public class Pontos extends AppCompatActivity {
+public class PontosActivity extends AppCompatActivity {
     ListView listView;
 
     @Override
@@ -38,7 +38,7 @@ public class Pontos extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent irTelaIncial = new Intent( this, PrincipalActivity.class);
+        Intent irTelaIncial = new Intent( getApplicationContext(), PrincipalActivity.class);
         startActivity(irTelaIncial);
         finish();
 

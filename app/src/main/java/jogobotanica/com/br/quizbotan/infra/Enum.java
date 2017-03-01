@@ -22,6 +22,12 @@ public class Enum {
     public  static final String RANKING = "Ranking";
     public  static final String PONTUACAO = "pontuacao";
 
+    //VARIAVEIS PERMANENTES CONTADOR DE JOGADAS DO USUARIO
+    public  static final String CONTADOR_JOGADAS_USUARIO = "contadorJogadasUsuario";
+    public  static final String CONTADOR_JOGADAS = "contadorJogadas";
+    public  static final String NIVEL = "nivel";
+
+
 
     public enum MODE{
         FÁCIL,

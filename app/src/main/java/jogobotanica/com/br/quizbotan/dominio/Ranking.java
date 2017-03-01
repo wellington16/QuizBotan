@@ -12,6 +12,9 @@ public class Ranking {
         Id = id;
         Score = score;
     }
+    public Ranking(){
+    }
+
 
     public int getId() {
         return Id;

@@ -9,10 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".gui.PrincipalActivity" />
-        <activity android:name=".gui.FimJogo" />
-        <activity android:name=".gui.Jogadas" />
-        <activity android:name=".gui.Pontos" />
-        <activity android:name=".gui.Splash">
+        <activity android:name=".gui.FimJogoActivity" />
+        <activity android:name=".gui.JogadasActivity" />
+        <activity android:name=".gui.PontosActivity" />
+        <activity android:name=".gui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -13,7 +13,7 @@ import jogobotanica.com.br.quizbotan.R;
 import jogobotanica.com.br.quizbotan.infra.Enum;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
-public class FimJogo extends AppCompatActivity {
+public class FimJogoActivity extends AppCompatActivity {
 
     Button btnTryAgain;
     TextView txtResultScore, txtResultQuestion;

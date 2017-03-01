@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,12 +19,17 @@ import jogobotanica.com.br.quizbotan.dominio.Questoes;
 import jogobotanica.com.br.quizbotan.dominio.Ranking;
 import jogobotanica.com.br.quizbotan.infra.Enum;
 
+import static android.icu.text.MessagePattern.ArgType.SELECT;
+
 public class DbHelper extends SQLiteOpenHelper {
 
     private static String DB_NAME = "banco.db";
     private static String DB_PATH = "";
     private SQLiteDatabase mDataBase;
     private Context mContext = null;
+    private static final String SELECT = "SELECT * FROM ";
+    private static final String WHERE = " WHERE ";
+    private static final String LIKE = " LIKE ? ";
 
     public DbHelper(Context context) {
         super(context, DB_NAME, null, 1);
@@ -104,7 +110,7 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c;
         try {
-            c = db.rawQuery("SELECT * FROM Questoes ORDER BY Random()", null);
+            c = db.rawQuery("SELECT * FROM "+Enum.QUESTOES+" ORDER BY Random()", null);
             if (c == null) return null;
             c.moveToFirst();
             do {
@@ -129,7 +135,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return listQuestoes;
     }
 
-    //We need improve this function to optimize process from Jogadas
+    //We need improve this function to optimize process from JogadasActivity
     public List<Questoes> getQuestionMode(String mode) {
         List<Questoes> listQuestoes = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -176,13 +182,38 @@ public class DbHelper extends SQLiteOpenHelper {
         return limit;
     }
 
-    //Inserir Pontos na lista de Ranking
+    //Inserir PontosActivity na lista de Ranking
     public void inserirPontos(double pontos) {
-        String query = "INSERT INTO "+Enum.RANKING+"("+Enum.PONTUACAO+") VALUES("+pontos+")";
-        mDataBase.execSQL(query);
+        Ranking ranking = buscar(pontos);
+        if (ranking == null) {
+            String query = "INSERT INTO " + Enum.RANKING + "(" + Enum.PONTUACAO + ") VALUES(" + pontos + ")";
+            mDataBase.execSQL(query);
+        }
+    }
+    private Ranking buscar(double pontos){
+            String idString = ""+pontos+"";
+            SQLiteDatabase db = this.getWritableDatabase();
+            Ranking ranking = null;
+            Cursor cursor = db.rawQuery(SELECT + Enum.RANKING +
+                    WHERE + Enum.PONTUACAO + LIKE, new String[]{idString});
+            if (cursor.moveToFirst()){
+                ranking = criarProduto(cursor);
+            }
+            cursor.close();
+            db.close();
+            return ranking;
+    }
+    private Ranking criarProduto(Cursor cursor){
+        Ranking ranking = new Ranking();
+        final int columnIndex1 = 0;
+        final int columnIndex2 = 1;
+        ranking.setId(cursor.getInt(columnIndex1));
+        ranking.setScore(cursor.getDouble(columnIndex2));
+        return ranking;
     }
 
-    //Listar de Pontos e Ranking
+
+    //Listar de PontosActivity e Ranking
     public List<Ranking> getRanking() {
         List<Ranking> listRanking = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -207,6 +238,13 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
+    public final  void deletar(){
+        SQLiteDatabase db = this.getWritableDatabase();
+//        String where = bdHelper.COLUNA_ID_SUPERMERCADO + "=" + supermercado.getId();
+        db.delete(Enum.RANKING,null, null);
+        db.close();
+    }
+
 
     //Update version 2.0
     public int getPlayCount(int level)
@@ -215,11 +253,11 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c;
         try{
-            c = db.rawQuery("SELECT contadorJogadas FROM contadorJogadasUsuario WHERE nivel="+level+";",null);
+            c = db.rawQuery("SELECT "+Enum.CONTADOR_JOGADAS+" FROM "+Enum.CONTADOR_JOGADAS_USUARIO+" WHERE "+Enum.NIVEL+" = "+level+";",null);
             if(c == null) return 0;
             c.moveToNext();
             do{
-                resultado  = c.getInt(c.getColumnIndex("contadorJogadas"));
+                resultado  = c.getInt(c.getColumnIndex(Enum.CONTADOR_JOGADAS));
             }while(c.moveToNext());
             c.close();
         }catch (Exception ex)
@@ -231,7 +269,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public void updatePlayCount(int level,int playCount)
     {
-        String query = String.format("UPDATE contadorJogadasUsuario Set contadorJogadas = %d WHERE nivel = %d",playCount,level);
+        String query = String.format("UPDATE "+Enum.CONTADOR_JOGADAS_USUARIO+" Set "+Enum.CONTADOR_JOGADAS+" = %d WHERE "+Enum.NIVEL+" = %d",playCount,level);
         mDataBase.execSQL(query);
     }
 }

@@ -18,7 +18,7 @@ import jogobotanica.com.br.quizbotan.dominio.Questoes;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 
-public class Jogadas extends AppCompatActivity implements View.OnClickListener {
+public class JogadasActivity extends AppCompatActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000; // 1 second
     final static long TIMEOUT = 5000; // 10 sconds
@@ -48,7 +48,7 @@ public class Jogadas extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_playing);
+        setContentView(R.layout.activity_jogadas);
 
         //Get Data from PrincipalActivity
         Bundle extra = getIntent().getExtras();
@@ -113,7 +113,7 @@ public class Jogadas extends AppCompatActivity implements View.OnClickListener {
             mCountDown.start();
         }
         else{
-            Intent intent = new Intent(this,FimJogo.class);
+            Intent intent = new Intent(this,FimJogoActivity.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("SCORE",score);
             dataSend.putInt("TOTAL",totalQuestion);

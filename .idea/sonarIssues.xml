@@ -23,6 +23,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/database/AbstractCursor.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/database/AbstractWindowedCursor.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/database/sqlite/SQLiteClosable.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/database/sqlite/SQLiteDatabase.class">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/AppData/Local/Android/sdk/platforms/android-25/android.jar!/android/os/BaseBundle.class">
           <value>
             <set />
@@ -43,7 +63,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/source/r/debug/jogobotanica/com/br/quizbotan/R.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/dominio/Ranking.java">
           <value>
             <set />
           </value>
@@ -58,7 +88,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/FimJogoActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/Jogadas.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/JogadasActivity.java">
           <value>
             <set />
           </value>
@@ -69,6 +109,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/Pontos.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/PontosActivity.java">
           <value>
             <set />
           </value>
@@ -88,6 +133,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/gui/SplashActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/jogobotanica/com/br/quizbotan/infra/CustomImagemAdapter.java">
           <value>
             <set />
@@ -103,12 +153,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_ajuda.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_done.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_fimjogo.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_jogadas.xml">
           <value>
             <set />
           </value>
