@@ -40,7 +40,7 @@ public class CustomImagemAdapter extends BaseAdapter {
     public final View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.linhaspontos,null);
+        View view = inflater.inflate(R.layout.linhas_pontos,null);
 
         ImageView imagemTopo = (ImageView)view.findViewById(R.id.imagemTopo);
         TextView textViewTopo = (TextView)view.findViewById(R.id.textViewTopo);

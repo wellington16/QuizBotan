@@ -22,7 +22,7 @@ public class FimJogoActivity extends AppCompatActivity {
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fimjogo);
+        setContentView(R.layout.activity_fim_jogo);
 
         DbHelper db = new DbHelper(this);
 
