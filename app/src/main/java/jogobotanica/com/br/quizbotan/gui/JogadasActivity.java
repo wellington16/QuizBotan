@@ -21,7 +21,7 @@ import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 public class JogadasActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final  long INTERVAL = 1000; // 1 second
-    private static final  long TIMEOUT = 5000; // 10 sconds
+    private static final  long TIMEOUT = 10000; // 10 sconds
     private int progressValue = 0;
 
     private CountDownTimer mCountDown; // for progressbar
