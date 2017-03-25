@@ -37,22 +37,22 @@
 
                 <TextView
                     android:id="@+id/txtScore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/button_border"
                     android:gravity="center"
                     android:text="0"
-                    android:textSize="36sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/txtQuestion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="1/30"
-                    android:textSize="36sp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
+                    android:textSize="30sp" />
 
             </LinearLayout>
 
