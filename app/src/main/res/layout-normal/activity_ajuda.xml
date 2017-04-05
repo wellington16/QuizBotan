@@ -14,36 +14,36 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/textView"
+        app:srcCompat="@mipmap/logo"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="11dp"
-        app:srcCompat="@mipmap/logo" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Este software tem como objetivo contribuir para uma melhor apredizagem no estudo da botânica. "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+        android:textSize="16sp"
+        android:layout_marginBottom="140dp"
+        android:layout_above="@+id/button4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="voltar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:onClick="voltar"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@android:color/background_light"
-        android:background="@color/backgroundPage" />
+        android:background="@color/backgroundPage"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView"
-        android:layout_marginTop="37dp"
-        android:text="Este software tem como objetivo ajudar no ensino aprendizagem da cadeira de botânica, na Universidade Federal Rural de Pernambuco-UFRPE"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-        android:textSize="24sp" />
 </RelativeLayout>

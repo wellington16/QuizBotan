@@ -15,6 +15,9 @@ import android.widget.TextView;
 import java.io.IOException;
 
 import jogobotanica.com.br.quizbotan.R;
+import jogobotanica.com.br.quizbotan.gui.AjudaActivity;
+import jogobotanica.com.br.quizbotan.gui.JogadasActivity;
+import jogobotanica.com.br.quizbotan.gui.PontosActivity;
 import jogobotanica.com.br.quizbotan.infra.Enum;
 import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
@@ -77,10 +80,7 @@ public class PrincipalActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),JogadasActivity.class);
-                intent.putExtra("MODE",getPlayMode()); // Send Mode to JogadasActivity page
-                startActivity(intent);
-                finish();
+                instrucoes();
             }
         });
 
@@ -104,8 +104,8 @@ public class PrincipalActivity extends AppCompatActivity {
         flags.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity( new Intent(getApplicationContext(),AjudaActivity.class));
-                finish();
+//                startActivity( new Intent(getApplicationContext(),AjudaActivity.class));
+//                finish();
             }
         });
 
@@ -142,6 +142,24 @@ public class PrincipalActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 //                DbHelper dbHelper = new DbHelper(getApplicationContext());
 //                dbHelper.deletar();
+                finish();
+            }
+        });
+        builder.setNegativeButton("Não", null);
+        AlertDialog alerta = builder.create();
+        alerta.show();
+    }
+
+    private void instrucoes(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Intruções");
+        builder.setMessage("Nas próximas telas você terá que observar a foto e escolher a alternativa correta. Lembrando que você tem um tempo para tal.");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(getApplicationContext(),JogadasActivity.class);
+                intent.putExtra("MODE",getPlayMode()); // Send Mode to JogadasActivity page
+                startActivity(intent);
                 finish();
             }
         });

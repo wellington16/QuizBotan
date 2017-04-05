@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,25 +21,25 @@ import jogobotanica.com.br.quizbotan.persistencia.DbHelper;
 
 public class JogadasActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final  long INTERVAL = 1000; // 1 second
-    private static final  long TIMEOUT = 10000; // 10 sconds
-    private int progressValue = 0;
+    private static final  long INTERVALO = 6500; // 10 second
+    private static final  long TEMPOTROCA = 40000; // 40 seconds
+    private int progressValor = 0;
 
     private CountDownTimer mCountDown; // for progressbar
     private List<Questoes> questoesPlay = new ArrayList<>(); //total Questoes
     private DbHelper db;
-    private int index=0,thisQuestion=0,totalQuestion = 0,correctAnswer = 0;
-    private String mode="";
-    private int score;
+    private int indeces =0, Questoes =0, totalQuestoes = 0, respostasCorreta = 0;
+    private String modo ="";
+    private int pontos;
 
     //Control
     private ProgressBar progressBar;
     private ImageView imageView;
-    private Button btnA,btnB,btnC,btnD;
-    private TextView txtScore,txtQuestion;
+    private Button btnAlternativaA, btnAlternativaB, btnAlternativaC, btnAlternativaD;
+    private TextView txtPontos, txtQuestoes;
 
-    public final int getScore() {
-        return score;
+    public final int getPontos() {
+        return pontos;
     }
 
     @Override
@@ -49,24 +50,24 @@ public class JogadasActivity extends AppCompatActivity implements View.OnClickLi
         //Get Data from PrincipalActivity
         Bundle extra = getIntent().getExtras();
         if(extra != null) {
-            mode = extra.getString("MODE");
+            modo = extra.getString("MODE");
         }
 
         db = new DbHelper(this);
 
-        txtScore = (TextView)findViewById(R.id.txtScore);
-        txtQuestion = (TextView)findViewById(R.id.txtQuestion);
+        txtPontos = (TextView)findViewById(R.id.txtScore);
+        txtQuestoes = (TextView)findViewById(R.id.txtQuestion);
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         imageView = (ImageView)findViewById(R.id.question_flag);
-        btnA=(Button)findViewById(R.id.btnAnswerA);
-        btnB=(Button)findViewById(R.id.btnAnswerB);
-        btnC=(Button)findViewById(R.id.btnAnswerC);
-        btnD=(Button)findViewById(R.id.btnAnswerD);
+        btnAlternativaA =(Button)findViewById(R.id.btnAnswerA);
+        btnAlternativaB =(Button)findViewById(R.id.btnAnswerB);
+        btnAlternativaC =(Button)findViewById(R.id.btnAnswerC);
+        btnAlternativaD =(Button)findViewById(R.id.btnAnswerD);
 
-        btnA.setOnClickListener(this);
-        btnB.setOnClickListener(this);
-        btnC.setOnClickListener(this);
-        btnD.setOnClickListener(this);
+        btnAlternativaA.setOnClickListener(this);
+        btnAlternativaB.setOnClickListener(this);
+        btnAlternativaC.setOnClickListener(this);
+        btnAlternativaD.setOnClickListener(this);
 
     }
 
@@ -74,47 +75,47 @@ public class JogadasActivity extends AppCompatActivity implements View.OnClickLi
     protected final void onResume() {
         super.onResume();
 
-        questoesPlay = db.getQuestionMode(mode);
-        totalQuestion = questoesPlay.size();
+        questoesPlay = db.getQuestionMode(modo);
+        totalQuestoes = questoesPlay.size();
 
-        mCountDown = new CountDownTimer(TIMEOUT,INTERVAL) {
+        mCountDown = new CountDownTimer(TEMPOTROCA, INTERVALO) {
             @Override
             public void onTick(long millisUntilFinished) {
-                    progressBar.setProgress(progressValue);
-                    progressValue = progressValue + 1;
+                progressBar.setProgress(progressValor);
+                progressValor = progressValor + 1;
             }
 
             @Override
             public void onFinish() {
                 mCountDown.cancel();
-                showQuestion(++index);
+                showQuestion(++indeces);
             }
         };
-        showQuestion(index);
+        showQuestion(indeces);
     }
 
     private final void showQuestion(int index) {
-        if(index < totalQuestion){
-            thisQuestion++;
-            txtQuestion.setText(String.format("%d/%d",thisQuestion,totalQuestion));
+        if(index < totalQuestoes){
+            Questoes++;
+            txtQuestoes.setText(String.format("%d/%d", Questoes, totalQuestoes));
             progressBar.setProgress(0);
-            progressValue = 0;
+            progressValor = 0;
 
             int imageId=this.getResources().getIdentifier(questoesPlay.get(index).getImage().toLowerCase(),"drawable",getPackageName());
             imageView.setBackgroundResource(imageId);
-            btnA.setText(questoesPlay.get(index).getRespostaA());
-            btnB.setText(questoesPlay.get(index).getRespostaB());
-            btnC.setText(questoesPlay.get(index).getRespostaC());
-            btnD.setText(questoesPlay.get(index).getRespostaD());
+            btnAlternativaA.setText(questoesPlay.get(index).getRespostaA());
+            btnAlternativaB.setText(questoesPlay.get(index).getRespostaB());
+            btnAlternativaC.setText(questoesPlay.get(index).getRespostaC());
+            btnAlternativaD.setText(questoesPlay.get(index).getRespostaD());
 
             mCountDown.start();
         }
         else{
             Intent intent = new Intent(this,FimJogoActivity.class);
             Bundle dataSend = new Bundle();
-            dataSend.putInt("SCORE",score);
-            dataSend.putInt("TOTAL",totalQuestion);
-            dataSend.putInt("CORRECT",correctAnswer);
+            dataSend.putInt("SCORE", pontos);
+            dataSend.putInt("TOTAL", totalQuestoes);
+            dataSend.putInt("CORRECT", respostasCorreta);
             intent.putExtras(dataSend);
             startActivity(intent);
             finish();
@@ -125,19 +126,22 @@ public class JogadasActivity extends AppCompatActivity implements View.OnClickLi
     public final void onClick(View v) {
 
         mCountDown.cancel();
-        if(index < totalQuestion){
+        if(indeces < totalQuestoes){
             Button clickedButton = (Button)v;
-            if(clickedButton.getText().equals(questoesPlay.get(index).getRespostaCorreta()))
+            if(clickedButton.getText().equals(questoesPlay.get(indeces).getRespostaCorreta()))
             {
+                Toast.makeText(getApplicationContext(),"Muito bem, reposta correta\n"+ questoesPlay.get(indeces).getRespostaCorreta(),Toast.LENGTH_SHORT).show();
                 final int pontos = 10;
-                score += pontos; // increase score
-                correctAnswer++ ; //increase correct answer
-                showQuestion(++index);
+                this.pontos += pontos; // increase pontos
+                respostasCorreta++ ; //increase correct answer
+                showQuestion(++indeces);
             }
             else {
-                showQuestion(++index); // If choose right , just go to next question
-                txtScore.setText(String.format("%d", getScore()));
+                Toast.makeText(getApplicationContext(),"A resposta correta seria:\n" + questoesPlay.get(indeces).getRespostaCorreta(),Toast.LENGTH_SHORT).show();
+                showQuestion(++indeces); // If choose right , just go to next question
+                txtPontos.setText(String.format("%d", getPontos()));
             }
+
         }
 
     }
